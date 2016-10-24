@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "build/app",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": false,
+        "noImplicitAny": false
+    },
+    "filesGlob": [
+        "app/**/*.ts",
+        "typings/**/*.d.ts"
+    ],
+    "exclude": [
+        "gulpfile.ts",
+        "node_modules"
+    ]
+}
