@@ -23,6 +23,13 @@ let HomeComponent = class HomeComponent {
         this.homeService.postVote(VoteObj);
         console.log("why hello there mfer!");
     }
+    authFacebook(Candidate) {
+        this.homeService.authFacebook(Candidate).subscribe(authUrl => {
+            console.log("Success! From the controller side");
+            console.log("Here's what I'm getting: ", authUrl);
+            window.location.href = authUrl;
+        }, error => console.error('Error: ', error), () => console.log("Done!"));
+    }
 };
 HomeComponent = __decorate([
     core_1.Component({

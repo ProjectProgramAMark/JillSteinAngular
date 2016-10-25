@@ -15,6 +15,8 @@ let HomeService = class HomeService {
     /*
      * TODO: Set up services like this:
             Front End               Angular services       Server Service
+            CONSIDER: Use another more Angular friendly OAuth API and just
+            give the access token to the fbGraph API on Node
           1. Modal button press -> facebookAuthService -> facebookAuthRoute
           2. Facebook authentication -> postVote -> save Vote to DB
           3. Randomly other vote object from opposite pile
@@ -23,7 +25,7 @@ let HomeService = class HomeService {
      */
     constructor(http) {
         this.http = http;
-        this.serverUrl = 'http://021c1c46.ngrok.io/';
+        this.serverUrl = 'http://c45d000c.ngrok.io/';
     }
     postVote(body) {
         // for now just print something stupid
@@ -31,8 +33,20 @@ let HomeService = class HomeService {
         let bodyString = JSON.stringify(body); // Stringify payload
         let headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new http_1.RequestOptions({ headers: headers }); // Create a request option
+        console.log("Is...is this being sent?");
         return this.http.get(this.serverUrl)
             .map((res) => res.json())
+            .catch((error) => Rx_1.Observable.throw(error.json().error || 'Server error'));
+    }
+    authFacebook(Candidate) {
+        var facebookUrl = this.serverUrl + 'facebookAuth';
+        console.log("Sent a request to server at url: ", facebookUrl);
+        return this.http.get(facebookUrl)
+            .map((res) => {
+            console.log("Auth url is: ", res._body);
+            return res._body;
+            // Going to change location to hit the facebookAuth url
+        })
             .catch((error) => Rx_1.Observable.throw(error.json().error || 'Server error'));
     }
 };
