@@ -11,6 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
 const home_component_1 = require('./home/components/home.component');
+const intermediate_component_1 = require('./intermediate/components/intermediate.component');
+const match_component_1 = require('./match/components/match.component');
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = __decorate([
@@ -18,7 +20,10 @@ AppRoutingModule = __decorate([
         imports: [
             router_1.RouterModule.forRoot([
                 { path: 'home', component: home_component_1.HomeComponent },
-                { path: '', redirectTo: 'home', pathMatch: 'full' }
+                { path: '', redirectTo: 'home', pathMatch: 'full' },
+                // make route for redirect from auth0 to happen
+                { path: 'intermediate', component: intermediate_component_1.IntermediateComponent },
+                { path: 'match', component: match_component_1.MatchComponent },
             ])
         ],
         exports: [

@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require("@angular/core");
-const Rx_1 = require("rxjs/Rx");
-const http_1 = require("@angular/http");
+const core_1 = require('@angular/core');
+const Rx_1 = require('rxjs/Rx');
+const http_1 = require('@angular/http');
 let HomeService = class HomeService {
     /*
      * TODO: Set up services like this:
@@ -25,34 +25,37 @@ let HomeService = class HomeService {
      */
     constructor(http) {
         this.http = http;
-        this.serverUrl = 'http://c45d000c.ngrok.io/';
+        this.serverUrl = 'http://7380a9b1.ngrok.io/';
     }
     postVote(body) {
         // for now just print something stupid
-        console.log("Something stupid");
-        let bodyString = JSON.stringify(body); // Stringify payload
-        let headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-        let options = new http_1.RequestOptions({ headers: headers }); // Create a request option
-        console.log("Is...is this being sent?");
-        return this.http.get(this.serverUrl)
-            .map((res) => res.json())
-            .catch((error) => Rx_1.Observable.throw(error.json().error || 'Server error'));
-    }
-    authFacebook(Candidate) {
-        var facebookUrl = this.serverUrl + 'facebookAuth';
-        console.log("Sent a request to server at url: ", facebookUrl);
-        return this.http.get(facebookUrl)
+        // console.log("Something stupid");
+        // console.log("Body is: ", body);
+        //
+        // let bodyString = JSON.stringify(body); // Stringify payload
+        // let headers      = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        // let options       = new RequestOptions({ headers: headers }); // Create a request option
+        // console.log("Is...is this being sent?");
+        // return this.http.get(this.serverUrl)
+        //                     // ...and calling .json() on the response to return data
+        //                      .map((res:Response) => {
+        //                        res.json();
+        //                        console.log("Post vote success has happened!");
+        //                      })
+        //                      //...errors if any
+        //                      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+        return this.http.post((this.serverUrl + 'postVote'), body)
             .map((res) => {
-            console.log("Auth url is: ", res._body);
-            return res._body;
-            // Going to change location to hit the facebookAuth url
+            console.log("Res is: ", res);
+            res.json();
         })
             .catch((error) => Rx_1.Observable.throw(error.json().error || 'Server error'));
     }
 };
 HomeService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    core_1.Injectable(), 
+    __metadata('design:paramtypes', [http_1.Http])
 ], HomeService);
 exports.HomeService = HomeService;
+
 //# sourceMappingURL=home.service.js.map

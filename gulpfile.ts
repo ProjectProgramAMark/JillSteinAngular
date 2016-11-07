@@ -65,7 +65,9 @@ gulp.task("libs", () => {
             'rxjs/**',
             'zone.js/dist/**',
             '@angular/**',
-            'ng2-modal/**'
+            'ng2-modal/**',
+            'angular2-jwt/**',
+            'auth0-lock/**'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("build/lib"));
 });

@@ -13,13 +13,15 @@ const home_component_1 = require('./home.component');
 const home_service_1 = require('./home.service');
 const ng2_modal_1 = require('ng2-modal');
 const http_1 = require('@angular/http');
+const auth_service_1 = require('./auth.service');
+const angular2_jwt_1 = require('angular2-jwt');
 let HomeModule = class HomeModule {
 };
 HomeModule = __decorate([
     core_1.NgModule({
         imports: [ng2_modal_1.ModalModule, http_1.HttpModule],
         declarations: [home_component_1.HomeComponent],
-        providers: [home_service_1.HomeService]
+        providers: [home_service_1.HomeService, auth_service_1.Auth, angular2_jwt_1.AUTH_PROVIDERS]
     }), 
     __metadata('design:paramtypes', [])
 ], HomeModule);

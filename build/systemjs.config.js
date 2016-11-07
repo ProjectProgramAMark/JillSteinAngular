@@ -24,7 +24,8 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
-      'ng2-modal': 'npm:ng2-modal'
+      'ng2-modal': 'npm:ng2-modal',
+      'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -39,7 +40,8 @@
         main: './index.js',
         defaultExtension: 'js'
       },
-      'ng2-modal': { 'main': 'index.js', 'defaultExtension': 'js' }
+      'ng2-modal': { 'main': 'index.js', 'defaultExtension': 'js' },
+      'angular2-jwt': { defaultExtension: 'js' }
     }
   });
 })(this);

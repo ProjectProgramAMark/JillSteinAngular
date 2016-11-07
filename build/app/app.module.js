@@ -13,11 +13,13 @@ const platform_browser_1 = require('@angular/platform-browser');
 const app_component_1 = require('./app.component');
 const app_routing_module_1 = require('./app-routing.module');
 const home_module_1 = require('./home/components/home.module');
+const intermediate_module_1 = require('./intermediate/components/intermediate.module');
+const match_module_1 = require('./match/components/match.module');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule, home_module_1.HomeModule],
+        imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule, home_module_1.HomeModule, intermediate_module_1.IntermediateModule, match_module_1.MatchModule],
         declarations: [app_component_1.AppComponent],
         bootstrap: [app_component_1.AppComponent]
     }), 
